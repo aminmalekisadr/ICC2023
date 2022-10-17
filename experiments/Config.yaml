@@ -1,0 +1,67 @@
+description: Parameters used to train a Genetic Algiorithm
+  print('1')
+# -------------------------------------------------------------------------------------------------
+# *** Settings for data preprocessing ***
+# IMPORTANT - avoid changing these data_parameters (other than the file paths), unless you really know what you are doing
+data_parameters:
+  input_file: "data/train"
+  label_file: "C:/Users/mmalekis/Desktop/Genetic-Algorithm-Guided-Satellite-Anomaly-Detection/data/labels/labeled_anomalies.csv"
+  data_url: https://s3-us-west-2.amazonaws.com/telemanom/data.zip
+  label_url: https://github.com/khundman/telemanom/raw/master/labeled_anomalies.csv
+  look_back: 20  # Num of time spaces to look back for training and testing RNN model (e.g. look_back = 50 means that the RNN will look at the previous 50 time steps)
+  look_back2: 20 # Num of time spaces to look back for training and testing RF model (e.g. look_back = 20 means that the RF will look at the previous 20 time steps)
+  train_size_percentage: 0.8  # Training size percentage
+  look_back3: 20
+
+
+# -------------------------------------------------------------------------------------------------
+# *** Settings for overall experiment control ***
+experiment_settings:
+  config_path: "experiments/Config.yaml"
+
+
+# -------------------------------------------------------------------------------------------------
+
+ml_parameters:
+  # -------------------------------------------------------------------------------------------------
+  # *** Settings for RNN model ***
+  min_num_layers: 2  # Min number of hidden layers
+  max_num_layers: 6  # Max number of hidden layers
+  min_num_neurons: 128  # Min number of neurons in hidden layers
+  max_num_neurons: 256  # Max number of neurons in hidden layers
+
+  # -------------------------------------------------------------------------------------------------
+  # *** Settings for RF model ***
+
+  min_num_estimators: 30  # Min number of random forest trees
+  max_num_estimators: 100  # Max number of random forest trees
+  # IO settings
+
+  # basic model hyperparams
+  optimizer_type: "ADAM"  # Optimizer type (e.g. "ADAM", "SGD", "RMSprop", "Adagrad", "Adadelta", "Adamax", "Nadam")
+  batch_size_inference: 256
+  max_dropout: 0.1 # Max dropout rate
+  rnn_epochs: 100
+  learning_rate_decay: 0.995  # Multiplicative term at the end of each epoch
+  target_gpu: "0"
+  mc_dropout: 1000            # Number of samples for MC Dropout-based uncertainty estimation. 0 to deactivate.
+
+  # -------------------------------------------------------------------------------------------------
+  min_number_of_estimators_LR: 100  # Min number of estimators for the logistic regression model
+  max_number_of_estimators_LR: 10000  # Max number of estimators for the logistic regression model
+  alpha_LR_min: 0.01  # min bounday between 0 and 1 for the logistic regression model (e.g. 0.0001)
+  alpha_LR_max: 0.1  #  max bounday between 0 and 1 for the logistic regression model (e.g. 0.1)
+
+
+
+ga_parameters:
+  # -------------------------------------------------------------------------------------------------
+  mutation_rate: 0.1  # Mutation rate for GA
+  min_mutation_momentum: 0.0001  # Min mutation momentum0
+  max_mutation_momentum: 0.1  # Max mutation momentum
+  min_population: 4 # Min population for GA
+  max_population: 6 # Max population for GA
+  num_Iterations: 3 # Number of iterations to evaluate GA
+  force_gc: True  # Forces garbage collector
+  models: [ "rnn","rf","lr" ]  # Models to evaluate in GA
+  # -------------------------------------------------------------------------------------------------

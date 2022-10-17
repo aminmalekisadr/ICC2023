@@ -1,0 +1,8 @@
+Metadata-Version: 2.1
+Name: src
+Version: 0.1
+Summary: GA based anomaly detection
+Home-page: https://github.com/aminmalekisadr/Genetic-Algorithm-Guided-Satellite-Anomaly-Detection
+Author: Mohammad Amin Maleki Sadr
+Author-email: aminmalekisadr@gmail.com
+License-File: LICENSE
