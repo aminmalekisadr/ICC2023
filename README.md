@@ -19,11 +19,10 @@ By default, consider using the following:
 ```
 @Article{Malekisadr2022,
   author="Mohammadamin Malekisadr, Yeying Zhu, Peng Hu",
-  title="{Genetic Algorithm Guided Ensemble of Neural
-Networks for Satellite Anomaly Detection}",
-  journal="IEEE Transactions on Aerospace and Electronic Systems ",
-  year="2022",
-  month="March",
+  title="{Satellite Anomaly Detection using Variance Based Genetic Ensemble of Neural Networks}",
+  journal="IEEE ICC ",
+  year="2023",
+  month="May",
   day="13",
 }
 ```
@@ -91,6 +90,10 @@ rnn_epochs = 1  # Epochs for RNN
 ```
 
 ### Running an Experiment
+
+Assuming you have set a configuration file in /path/to/config.yaml, and the configuration file's input_file option contains the path to the downloaded data, these are the steps to fully run an experiment:
+''' python main.py   /path/to/config.yaml  dataset-name'''
+
 ## Future Direction:
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
