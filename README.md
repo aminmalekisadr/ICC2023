@@ -55,9 +55,9 @@ CUDA: 11.0
 Clone this repository, and then install it and its requirements. It should be something similar to this:
 
 ```
-git clone https://github.com/aminmalekisadr/Genetic-Algorithm-Guided-Satellite-Anomaly-Detection.git
-pip3 install -e Genetic-Algorithm-Guided-Satellite-Anomaly-Detection/
-pip3 install -r Genetic-Algorithm-Guided-Satellite-Anomaly-Detection/requirements.txt
+git clone     https://github.com/aminmalekisadr/ICC2022.git
+pip3 install -e ICC2022/
+pip3 install -r ICC2022/requirements.txt
 ```
 
 ### Dataset
@@ -92,7 +92,11 @@ rnn_epochs = 1  # Epochs for RNN
 ### Running an Experiment
 
 Assuming you have set a configuration file in /path/to/config.yaml, and the configuration file's input_file option contains the path to the downloaded data, these are the steps to fully run an experiment:
-''' python main.py   /path/to/config.yaml  dataset-name'''
+
+``` 
+python main.py   /path/to/config.yaml  dataset-name 
+
+```
 
 ## Future Direction:
 ## License
